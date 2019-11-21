@@ -16,7 +16,7 @@ const Login = props => {
 
     return (
         <React.Fragment>
-            <div className="container bg-theme-color">
+            <div className="container login bg-theme-color">
                 <div className="row justify-content-center align-items-center">
                     <div className="col-md-6">
                         <div className="col-md-12 login-box bg-white">

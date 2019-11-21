@@ -3,6 +3,8 @@ import FormUserDetails from './FormUserDetails';
 import FormPersonalDetails from './FormPersonalDetails';
 import Confirm from './Confirm';
 import Success from './Success';
+import Meals from './Meals';
+
 
 export class ClientVisitCreateForm extends Component {
   state = {
@@ -60,6 +62,15 @@ export class ClientVisitCreateForm extends Component {
           />
         );
       case 3:
+        return (
+          <Meals
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 4:
         return (
           <Confirm
             nextStep={this.nextStep}

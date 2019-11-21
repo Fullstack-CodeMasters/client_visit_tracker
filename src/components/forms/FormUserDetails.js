@@ -10,7 +10,7 @@ export class FormUserDetails extends Component {
     const { values, handleChange } = this.props;
     return (
         <React.Fragment>
-            <h1> Enter User Detailss</h1>
+            <h1> Enter Guest Details</h1>
             <input type="text"
               placeholder="Enter Your First Name"
               label="First Name"
