@@ -78,7 +78,7 @@ export class ClientVisitCreateForm extends Component {
             values={values}
           />
         );
-      case 4:
+      case 5:
         return <Success />;
     }
   }
