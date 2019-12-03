@@ -14,7 +14,27 @@ export class ClientVisitCreateForm extends Component {
     email: '',
     occupation: '',
     city: '',
-    bio: ''
+    bio: '',
+    MealsDetails: [
+      {
+        date: "2017-09-27",
+        arrangeFrom: "Olive",
+        vegCount: "2",
+        nonVegCount: "3"
+      },
+      {
+        date: "2017-09-28",
+        arrangeFrom: "Office",
+        vegCount: "2",
+        nonVegCount: "3"
+      },
+      {
+        date: "2017-09-30",
+        arrangeFrom: "Four points",
+        vegCount: "2",
+        nonVegCount: "3"
+      }
+    ],
   };
 
   // Proceed to next step
@@ -40,8 +60,8 @@ export class ClientVisitCreateForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, occupation, city, bio } = this.state;
-    const values = { firstName, lastName, email, occupation, city, bio };
+    const { firstName, lastName, email, occupation, city, bio,MealsDetails } = this.state;
+    const values = { firstName, lastName, email, occupation, city, bio, MealsDetails };
 
     switch (step) {
       case 1:
