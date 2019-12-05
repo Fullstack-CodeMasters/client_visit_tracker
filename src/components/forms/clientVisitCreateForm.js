@@ -9,12 +9,28 @@ import Meals from './Meals';
 export class ClientVisitCreateForm extends Component {
   state = {
     step: 1,
-    firstName: '',
-    lastName: '',
-    email: '',
-    occupation: '',
-    city: '',
-    bio: ''
+    name: '',
+    role: '',
+    teamName: '',
+    clientWorkPlace: '',
+    clientTripDetails: {
+      arrivalDetails: {
+        dateTime: '',
+        airport: '',
+        terminal: ''
+      },
+      departureDetails: {
+        dateTime: '',
+        airport: '',
+        terminal: ''
+      }
+    },
+    hotelDetails: {
+      hotelName: '',
+      hotelPlace: ''
+    },
+    isCabNeededFromToAirport: false,
+    isCabNeededFromToOffice: false
   };
 
   // Proceed to next step
@@ -40,8 +56,8 @@ export class ClientVisitCreateForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, occupation, city, bio } = this.state;
-    const values = { firstName, lastName, email, occupation, city, bio };
+    const { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice } = this.state;
+    const values = { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice };
 
     switch (step) {
       case 1:
@@ -80,6 +96,8 @@ export class ClientVisitCreateForm extends Component {
         );
       case 5:
         return <Success />;
+      default:
+        return (<Success />);
     }
   }
 }
