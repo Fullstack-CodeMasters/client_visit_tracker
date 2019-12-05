@@ -30,7 +30,27 @@ export class ClientVisitCreateForm extends Component {
       hotelPlace: ''
     },
     isCabNeededFromToAirport: false,
-    isCabNeededFromToOffice: false
+    isCabNeededFromToOffice: false,
+    MealsDetails: [
+      {
+        date: "2017-09-27",
+        arrangeFrom: "Olive",
+        vegCount: "2",
+        nonVegCount: "3"
+      },
+      {
+        date: "2017-09-28",
+        arrangeFrom: "Office",
+        vegCount: "2",
+        nonVegCount: "3"
+      },
+      {
+        date: "2017-09-30",
+        arrangeFrom: "Four points",
+        vegCount: "2",
+        nonVegCount: "3"
+      }
+    ],
   };
 
   // Proceed to next step
@@ -56,8 +76,9 @@ export class ClientVisitCreateForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice } = this.state;
-    const values = { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice };
+
+    const { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails } = this.state;
+    const values = { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails };
 
     switch (step) {
       case 1:
