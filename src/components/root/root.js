@@ -72,7 +72,7 @@ export default function Root(props) {
                         sessionUser === null ? <Redirect to={{
                             pathname: "/login",
                             state: { from: props.location }
-                        }}/>  : <View {...props}/>
+                        }}/>  : <ClientVisitCreateForm {...props}/>
                     )}/>
                     <Route path="/view/:id" render={(props) => (
                         sessionUser === null ? <Redirect to={{
