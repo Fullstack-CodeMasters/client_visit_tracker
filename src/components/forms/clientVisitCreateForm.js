@@ -7,35 +7,42 @@ import Meals from './Meals';
 
 
 export class ClientVisitCreateForm extends Component {
-  state = {
-    step: 1,
-    firstName: '',
-    lastName: '',
-    email: '',
-    occupation: '',
-    city: '',
-    bio: '',
-    MealsDetails: [
-      {
-        date: "2017-09-27",
-        arrangeFrom: "Olive",
-        vegCount: "2",
-        nonVegCount: "3"
-      },
-      {
-        date: "2017-09-28",
-        arrangeFrom: "Office",
-        vegCount: "2",
-        nonVegCount: "3"
-      },
-      {
-        date: "2017-09-30",
-        arrangeFrom: "Four points",
-        vegCount: "2",
-        nonVegCount: "3"
-      }
-    ],
-  };
+  
+  constructor() {
+    super();
+    //check if the match path contains any value,
+    // if so do a back end call and initialize with backend json to render edit functionality.
+    // const cardDetails = await.fetch('/get/card/1').json;
+    this.state = {
+      step: 1,
+      firstName: '',
+      lastName: '',
+      email: '',
+      occupation: '',
+      city: '',
+      bio: '',
+      MealsDetails: [
+        {
+          date: "2017-09-27",
+          arrangeFrom: "Olive",
+          vegCount: "2",
+          nonVegCount: "3"
+        },
+        {
+          date: "2017-09-28",
+          arrangeFrom: "Office",
+          vegCount: "2",
+          nonVegCount: "3"
+        },
+        {
+          date: "2017-09-30",
+          arrangeFrom: "Four points",
+          vegCount: "2",
+          nonVegCount: "3"
+        }
+      ],
+    };
+  }
 
   // Proceed to next step
   nextStep = () => {

@@ -4,10 +4,10 @@ import Dashboard from '../dashboard/dashboard';
 import GuestUserNavbar from '../navbar/guestUserNavbar';
 import LoggedInUserNavbar from '../navbar/loggedInUserNavbar';
 import ClientVisitCreateForm from '../forms/clientVisitCreateForm';
+import View from '../view/view';
 import {Route, Switch, Redirect, BrowserRouter as Router} from 'react-router-dom';
 
 import './root.css';
-
 
 export default function Root(props) {
 
@@ -55,36 +55,37 @@ export default function Root(props) {
             <Router>
                 <Switch>
 
-                    <Route path={["/", "/login"]} exact render={({ location }) =>
-                        sessionUser === null ? <Login
-                            userRoles={userRoles}
-                            handleUserRoleChange={handleSignIn}/> : (
-                            <Redirect
-                                to={{
+                    <Route path={["/", "/login"]} exact render={({ location, routeProps }) =>
+                        sessionUser === null ? <Login userRoles={userRoles} handleUserRoleChange={handleSignIn}/> :
+                            <Redirect to={{
                                     pathname: "/dashboard/1",
                                     state: { from: location }
-                                }}
-                            />)
+                                }}/>
                     }/>
-
-                    <Route path="/dashboard/:id" render={({ location }) =>
-                        sessionUser === null ? (<Redirect
-                                to={{
+                    <Route path="/dashboard/:id" render={(props) => (
+                        sessionUser === null ? <Redirect to={{
                                     pathname: "/login",
-                                    state: { from: location }
-                                }}
-                            />)  : <Dashboard />
-                    }/>
-
-                    <Route path="/create" render={({ location }) =>
-                        sessionUser === null ? (<Redirect
-                                to={{
-                                    pathname: "/login",
-                                    state: { from: location }
-                                }}
-                            />) : <ClientVisitCreateForm/>
-                    }
-                    />
+                                    state: { from: props.location }
+                                }}/>  : <Dashboard {...props}/>
+                    )}/>
+                    <Route path="/create" render={(props) => (
+                        sessionUser === null ? <Redirect to={{
+                            pathname: "/login",
+                            state: { from: props.location }
+                        }}/>  : <View {...props}/>
+                    )}/>
+                    <Route path="/view/:id" render={(props) => (
+                        sessionUser === null ? <Redirect to={{
+                            pathname: "/login",
+                            state: { from: props.location }
+                        }}/>  : <View {...props}/>
+                    )}/>
+                    <Route path="/edit/:id" render={(props) => (
+                        sessionUser === null ? <Redirect to={{
+                            pathname: "/login",
+                            state: { from: props.location }
+                        }}/>  : <ClientVisitCreateForm {...props}/>
+                    )}/>
                 </Switch>
             </Router>
             <div className="footer bg-info">
