@@ -20,8 +20,27 @@ export default function View(props) {
             email: '',
             occupation: '',
             city: '',
-            bio: ''
-        }
+            bio: '',
+            MealsDetails: [
+            {
+                date: "2017-09-27",
+                arrangeFrom: "Olive",
+                vegCount: "2",
+                nonVegCount: "3"
+            },
+            {
+                date: "2017-09-28",
+                arrangeFrom: "Office",
+                vegCount: "2",
+                nonVegCount: "3"
+            },
+            {
+                date: "2017-09-30",
+                arrangeFrom: "Four points",
+                vegCount: "2",
+                nonVegCount: "3"
+            }]
+        };
         setCardDetail(cardDetail);
     }
 
