@@ -26,11 +26,11 @@ export class ClientVisitCreateForm extends Component {
       }
     },
     hotelDetails: {
-      hotelName: '',
-      hotelPlace: ''
+      name: '',
+      place: ''
     },
-    isCabNeededFromToAirport: false,
-    isCabNeededFromToOffice: false,
+    isCabNeededFromToAirport: false,  //todo name change
+    isCabNeededFromToOffice: false,  //todo name change
     MealsDetails: [
       {
         date: "2017-09-27",

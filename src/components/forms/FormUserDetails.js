@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ClientTripDetails from './ClientTripDetails';
+import HotelDetails from "./HotelDetails";
+import CabDetails from "./CabDetails";
 
 export class FormUserDetails extends Component {
   continue = e => {
@@ -15,7 +17,7 @@ export class FormUserDetails extends Component {
     const { values, handleChange } = this.props;
     return (
       <React.Fragment>
-        <h1> Enter Guest Details</h1>
+        <h3> Enter Guest Details</h3>
         <input type="text"
           placeholder="Enter Your Name"
           label="Name"
@@ -43,10 +45,22 @@ export class FormUserDetails extends Component {
           onChange={handleChange('clientWorkPlace')}
           defaultValue={values.clientWorkPlace}
         />
-        <br />
+        <br /><br/>
         <ClientTripDetails
         handleChange={this.handleChange}
         defaultValue={values.clientTripDetails}
+        />
+        <br />
+        <br />
+        <HotelDetails
+        handleChange={this.handleChange}
+        defaultValue={values.hotelDetails}
+        />
+        <br />
+        <br />
+        <CabDetails
+        handleChange={this.handleChange}
+        defaultValue={values.hotelDetails}
         />
         <br />
         <button
