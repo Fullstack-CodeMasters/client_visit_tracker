@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './dashboard.css';
 
-export default function Dashboard({match}) {
+export default function Dashboard(props) {
 
     useEffect(() => {
         fetchUserDetails();
-        console.log(match);
+        console.log(props);
     },[]);
 
     const [cardDetails, setCardDetails] = useState([]);
@@ -34,7 +34,11 @@ export default function Dashboard({match}) {
                                     needful arrangement as mentioned in the form</p>
                             </div>
                             <div className="col-md-1 py-4 align-content-center">
-                                <button key={card.id} name="editCard" className="btn btn-info btn-md">Edit</button>
+                                <button
+                                    key={card.id}
+                                    name="editCard"
+                                    className="btn btn-info btn-md"
+                                    onClick={() => props.history.push('/view/1')}>View</button>
                             </div>
                         </div>
                     </div>
