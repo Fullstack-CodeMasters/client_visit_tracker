@@ -37,6 +37,82 @@ export class ClientVisitCreateForm extends Component {
       },
       isCabNeededBtwAirportAndHotel: false,
       isCabNeededBtwHotelAndOffice: false,
+      firstName: '',
+      lastName: '',
+      email: '',
+      occupation: '',
+      city: '',
+      bio: '',
+      ScheduleList: [
+        {
+          date: "2017-09-27",
+          schedules:[
+            {
+              from: "10:00",
+              to: "11:00",
+              description: "Day 01>> meeting with Aravind",
+              Attendees: "Aravind"
+            },
+            {
+              from: "11:00",
+              to: "12:00",
+              description: "Day 01>>meeting with CEO",
+              Attendees: "CEO"
+            },
+            {
+              from: "10:00",
+              to: "11:00",
+              description: "Day 01>>meeting with Nimi",
+              Attendees: "Nimi, test"
+            }
+          ]
+        },
+        {
+          date: "2017-09-28",
+          schedules:[
+            {
+              from: "10:00",
+              to: "11:00",
+              description: "Day 02>>meeting with Aravind",
+              Attendees: "Aravind"
+            },
+            {
+              from: "11:00",
+              to: "12:00",
+              description: "Day 02>>meeting with CEO",
+              Attendees: "CEO"
+            },
+            {
+              from: "10:00",
+              to: "11:00",
+              description: "Day 02>>meeting with Nimi",
+              Attendees: "Nimi, test"
+            }
+          ]
+        },
+        {
+          date: "2017-09-28",
+          schedules:[
+            {
+              from: "10:00",
+              to: "11:00",
+              description: "Day 03>>meeting with Aravind",
+              Attendees: "Aravind"
+            },
+            {
+              from: "11:00",
+              to: "12:00",
+              description: "Day 03>>meeting with CEO",
+              Attendees: "CEO"
+            },
+            {
+              from: "10:00",
+              to: "11:00",
+              description: "Day 03>>meeting with Nimi",
+              Attendees: "Nimi, test"
+            }
+          ]
+        }],
       MealsDetails: [
         {
           date: "2017-09-27",
