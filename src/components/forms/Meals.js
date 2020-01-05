@@ -33,7 +33,7 @@ return (
                 <h1>Meals Details</h1>
                 {meals.map(function (meal, index) {
                      return (
-                        <React.Fragment>
+                        <React.Fragment key={index}>
                 <ButtonToolbar>
                     <Button variant="primary" size="sm" active>
                     {meal.date}
@@ -52,7 +52,7 @@ return (
                         <Form.Control name="veg_cnt" type="veg_cnt" placeholder="Veg Count" onChange={handleChange('meal.vegCount')} defaultValue={meal.vegCount} required/>
                     </Form.Group>
                     <Form.Group  as={Col} md="4" controlId="nonveg_cnt">
-                        <Form.Label>Nonveg Count</Form.Label>
+                        <Form.Label>Non veg Count</Form.Label>
                         <Form.Control name="nonveg_cnt" type="nonveg_cnt" placeholder="Nonveg Count" onChange={handleChange('meal.nonVegCount')} defaultValue={meal.nonVegCount} required/>
                     </Form.Group>
         ​        </Form.Row>     

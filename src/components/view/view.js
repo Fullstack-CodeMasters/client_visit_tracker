@@ -18,6 +18,10 @@ export default function View(props) {
             firstName: '',
             lastName: '',
             email: '',
+            pmo: '',
+            admin: '',
+            contactNumber: '',
+            manager:'',
             occupation: '',
             city: '',
             bio: '',
@@ -124,6 +128,10 @@ export default function View(props) {
                 <label >Occupation: {cardDetail.occupation}</label><br/>
                 <label >City: {cardDetail.city}</label><br/>
                 <label >Bio: {cardDetail.bio}</label><br/>
+                <label >PMO: {cardDetail.pmo}</label><br/>
+                <label >Admin: {cardDetail.admin}</label><br/>
+                <label >Contact Number: {cardDetail.contactNumber}</label><br/>
+                <label >Manager: {cardDetail.manager}</label><br/>
             </div>
             <br />
 

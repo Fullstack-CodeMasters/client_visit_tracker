@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Form, Row, Col,Container,ButtonToolbar, Button} from "react-bootstrap";
+import {Form, Row, Col, Container, ButtonToolbar, Button} from "react-bootstrap";
 
 export class MeetingSchedule extends Component {
     continue = e => {
@@ -12,72 +12,60 @@ export class MeetingSchedule extends Component {
         e.preventDefault();
         this.props.prevStep();
     };
-    // handleSubmit(event) {
-    //     event.preventDefault();
-    //     const form = event.target;
-    //     const data = new FormData(form);
-    //     for (let name of data.keys()) {
-    //         const input = form.elements[name];
-    //         console.log(input);
-    //     }
-    //     console.log(data);
-    // }
+
     render() {
-        const { values, handleChange } = this.props;
-        // console.log( values.ScheduleList);
+        const {values, handleChange} = this.props;
         var scheduleList = values.ScheduleList;
-        // console.log( scheduleList.schedules);
-        // var scheduleDetailList = scheduleList.schedules;
         return (
             <Container>
                 <Row>
                     <Col md={12}>
                         <h1>Meeting Schedule</h1>
-                        {scheduleList.map(function (scheduleList, index) {
+                        {scheduleList && scheduleList.map(function (schedule, index) {
                             return (
-                                <React.Fragment>
+                                <React.Fragment key={index}>
                                     <ButtonToolbar>
                                         <Button variant="primary" size="sm" active>
-                                            {scheduleList.date}
+                                            {schedule.date}
                                         </Button>
 
                                     </ButtonToolbar>
 
-                                    {scheduleList.schedules.map(function (schedule, index) {
-                                        return(
-                                            <React.Fragment>
+                                    {schedule && schedule.schedules.map(function (scheduleDetail, index) {
+                                        return (
+                                            <React.Fragment key={index}>
 
-                                                <Form.Row >
-                                                    <Form.Group as={Col} md="3" controlId="arrangeFrom">
+                                                <Form.Row>
+                                                    <Form.Group as={Col} md="3" controlId="description">
                                                         <Form.Label>Description</Form.Label>
                                                         <Form.Control name="description" type="description"
                                                                       placeholder="Description"
-                                                                      onChange={handleChange('schedule.description')}
-                                                                      defaultValue={schedule.description}/>
+                                                                      onChange={handleChange('scheduleDetail.description')}
+                                                                      defaultValue={scheduleDetail.description}/>
                                                     </Form.Group>
 
-                                                    <Form.Group as={Col} md="3" controlId="arrangeFrom">
+                                                    <Form.Group as={Col} md="3" controlId="Attendees">
                                                         <Form.Label>Attendees</Form.Label>
                                                         <Form.Control name="Attendees" type="Attendees"
                                                                       placeholder="Attendees"
-                                                                      onChange={handleChange('schedule.Attendees')}
-                                                                      defaultValue={schedule.Attendees}/>
+                                                                      onChange={handleChange('scheduleDetail.Attendees')}
+                                                                      defaultValue={scheduleDetail.Attendees}/>
                                                     </Form.Group>
 
-                                                    <Form.Group as={Col} md="3" controlId="arrangeFrom">
+                                                    <Form.Group as={Col} md="3" controlId="from">
                                                         <Form.Label>From</Form.Label>
                                                         <Form.Control name="from" type="from"
                                                                       placeholder="from"
-                                                                      onChange={handleChange('schedule.from')}
-                                                                      defaultValue={schedule.from}/>
+                                                                      onChange={handleChange('scheduleDetail.from')}
+                                                                      defaultValue={scheduleDetail.from}/>
                                                     </Form.Group>
 
-                                                    <Form.Group as={Col} md="3" controlId="arrangeFrom">
+                                                    <Form.Group as={Col} md="3" controlId="to">
                                                         <Form.Label>To</Form.Label>
                                                         <Form.Control name="to" type="to"
                                                                       placeholder="to"
-                                                                      onChange={handleChange('schedule.to')}
-                                                                      defaultValue={schedule.to}/>
+                                                                      onChange={handleChange('scheduleDetail.to')}
+                                                                      defaultValue={scheduleDetail.to}/>
                                                     </Form.Group>
 
                                                 </Form.Row>
@@ -89,7 +77,7 @@ export class MeetingSchedule extends Component {
                             )
                         })}
                         <ButtonToolbar>
-                            <Button variant="primary"  onClick={this.back}>Back</Button>&nbsp;
+                            <Button variant="primary" onClick={this.back}>Back</Button>&nbsp;
                             <Button variant="secondary" onClick={this.continue}>Continue</Button>
                         </ButtonToolbar>
                     </Col>
@@ -98,4 +86,5 @@ export class MeetingSchedule extends Component {
         );
     }
 }
+
 export default MeetingSchedule;
