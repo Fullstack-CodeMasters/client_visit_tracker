@@ -18,7 +18,7 @@ export class ClientTripDetails extends Component {
                 <h3> Enter Trip Details</h3>
                 <TripInfo
                 handleChange={this.handleChange}
-                values={values.clientTripDetails}
+                values={values}
                 />
             </div>
         );

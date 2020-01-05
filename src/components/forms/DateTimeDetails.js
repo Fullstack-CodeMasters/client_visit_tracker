@@ -18,19 +18,19 @@ export class Details extends Component {
                     placeholder="dateTime"
                     label="dateTime"
                     onChange={handleChange('dateTime')}
-                    defaultValue={values.dateTime}
+                    defaultValue={values}
                 />
                 <input type="text"
                     placeholder="airport"
                     label="airport"
                     onChange={handleChange('airport')}
-                    defaultValue={values.airport}
+                    defaultValue={values}
                 />
                 <input type="text"
                     placeholder="terminal"
                     label="terminal"
                     onChange={handleChange('terminal')}
-                    defaultValue={values.terminal}
+                    defaultValue={values}
                 />
             </div>
         );

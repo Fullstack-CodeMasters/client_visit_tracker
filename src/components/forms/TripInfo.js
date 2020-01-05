@@ -18,12 +18,12 @@ export class TripInfo extends Component {
                 <h5> Arrival </h5>
                 <Details
                 handleChange={this.handleChange}
-                values={values.arrivalDetails}
+                values={values}
                 />
                 <h5> Departure </h5>
                 <Details
                 handleChange={this.handleChange}
-                values={values.departureDetails}
+                values={values}
                 />
             </div>
         );
