@@ -35,8 +35,8 @@ export class ClientVisitCreateForm extends Component {
         name: '',
         place: ''
       },
-      isCabNeededFromToAirport: false,  //todo name change
-      isCabNeededFromToOffice: false,  //todo name change
+      isCabNeededBtwAirportAndHotel: false,
+      isCabNeededBtwHotelAndOffice: false,
       MealsDetails: [
         {
           date: "2017-09-27",
@@ -92,6 +92,7 @@ export class ClientVisitCreateForm extends Component {
         return (
           <FormUserDetails
             nextStep={this.nextStep}
+            prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
           />

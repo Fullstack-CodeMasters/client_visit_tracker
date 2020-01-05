@@ -48,7 +48,7 @@ export class FormUserDetails extends Component {
         <br /><br/>
         <ClientTripDetails
         handleChange={this.handleChange}
-        defaultValue={values.clientTripDetails}
+        defaultValue={values}
         />
         <br />
         <br />
