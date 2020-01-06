@@ -19,9 +19,7 @@ export class Confirm extends Component {
             firstName: this.props.values.firstName,
             lastName: this.props.values.lastName,
             email: this.props.values.email,
-            arrangeFrom: this.props.values.arrangeFrom,
-            vegCount: this.props.values.vegCount,
-            nonVegCount: this.props.values.nonVegCount,
+            mealsDetails: this.props.values.MealsDetails,
         };
 
         console.log(payload)

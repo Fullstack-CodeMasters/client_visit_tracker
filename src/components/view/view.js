@@ -25,7 +25,7 @@ export default function View(props) {
             occupation: '',
             city: '',
             bio: '',
-            ScheduleList: [
+            MeetingSchedule: [
                 {
                     date: "2017-09-27",
                     schedules:[

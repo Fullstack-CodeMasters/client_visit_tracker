@@ -72,53 +72,54 @@ export class ClientVisitCreateForm extends Component {
                             Attendees: "Nimi, test"
                         }
                     ]
-                },
-                {
-                    date: "2017-09-28",
-                    schedules: [
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 02>>meeting with Aravind",
-                            Attendees: "Aravind"
-                        },
-                        {
-                            from: "11:00",
-                            to: "12:00",
-                            description: "Day 02>>meeting with CEO",
-                            Attendees: "CEO"
-                        },
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 02>>meeting with Nimi",
-                            Attendees: "Nimi, test"
-                        }
-                    ]
-                },
-                {
-                    date: "2017-09-28",
-                    schedules: [
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 03>>meeting with Aravind",
-                            Attendees: "Aravind"
-                        },
-                        {
-                            from: "11:00",
-                            to: "12:00",
-                            description: "Day 03>>meeting with CEO",
-                            Attendees: "CEO"
-                        },
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 03>>meeting with Nimi",
-                            Attendees: "Nimi, test"
-                        }
-                    ]
-                }],
+                }
+                // ,{
+                //     date: "2017-09-28",
+                //     schedules: [
+                //         {
+                //             from: "10:00",
+                //             to: "11:00",
+                //             description: "Day 02>>meeting with Aravind",
+                //             Attendees: "Aravind"
+                //         },
+                //         {
+                //             from: "11:00",
+                //             to: "12:00",
+                //             description: "Day 02>>meeting with CEO",
+                //             Attendees: "CEO"
+                //         },
+                //         {
+                //             from: "10:00",
+                //             to: "11:00",
+                //             description: "Day 02>>meeting with Nimi",
+                //             Attendees: "Nimi, test"
+                //         }
+                //     ]
+                // },
+                // {
+                //     date: "2017-09-28",
+                //     schedules: [
+                //         {
+                //             from: "10:00",
+                //             to: "11:00",
+                //             description: "Day 03>>meeting with Aravind",
+                //             Attendees: "Aravind"
+                //         },
+                //         {
+                //             from: "11:00",
+                //             to: "12:00",
+                //             description: "Day 03>>meeting with CEO",
+                //             Attendees: "CEO"
+                //         },
+                //         {
+                //             from: "10:00",
+                //             to: "11:00",
+                //             description: "Day 03>>meeting with Nimi",
+                //             Attendees: "Nimi, test"
+                //         }
+                //     ]
+                // }
+                    ],
             MealsDetails: [
                 {
                     date: "2017-09-27",
@@ -166,8 +167,8 @@ export class ClientVisitCreateForm extends Component {
   render() {
     const { step } = this.state;
 
-    const { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails, ScheduleList } = this.state;
-    const values = { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails, ScheduleList };
+    const { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails, ScheduleList, pmo, admin, manager, status, contactNumber } = this.state;
+    const values = { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails, ScheduleList,pmo, admin, manager, status, contactNumber };
 
     switch (step) {
       case 1:
