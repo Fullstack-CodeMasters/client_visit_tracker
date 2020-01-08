@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { ToggleButton } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 export class CabDetails extends Component {
     constructor(props) {
 		super(props);
 		this.state = {isOn: false};
     }
-    
+
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -25,9 +25,14 @@ export class CabDetails extends Component {
         return (
             <div className={classNames} onClick={this.props.handleToggle}>
                 <h3> Cab Details </h3>
-                <ToggleButton
-                    onClick={this.props.handleToggle}
-                />
+                <Form>
+                  <Form.Check
+                    type="switch"
+                    id="custom-switch"
+                    label="If cab Needed"   onClick={this.props.handleToggle}
+                  />
+                 </Form>
+
             </div>
         );
     }

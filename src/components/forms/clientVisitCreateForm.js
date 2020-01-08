@@ -148,6 +148,15 @@ export class ClientVisitCreateForm extends Component {
         });
     };
 
+    addnewMeals = () => {
+                var MealsData = this.state.MealsDetails;
+                console.log(MealsData);
+                MealsData.push({date: "", arrangeFrom: "", vegCount: "", nonVegCount: ""});
+                 console.log(MealsData);
+                this.setState({MealsDetails:MealsData});
+            };
+
+
     handleChange = (input,index) => e => {
         if((input==="arrangeFrom" ) || (input==="vegCount") || (input==="nonVegCount")){
             var MealsDetails=this.state.MealsDetails;
@@ -191,6 +200,7 @@ export class ClientVisitCreateForm extends Component {
         return (
           <Meals
             nextStep={this.nextStep}
+            addnewMeals = {this.addnewMeals}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
