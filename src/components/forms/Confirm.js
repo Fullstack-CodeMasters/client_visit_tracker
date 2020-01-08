@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from "axios";
 
 const BASE_API_URL = `http://localhost:8080`
 const SAVE_API_URL = `${BASE_API_URL}/saveData`
@@ -16,12 +15,15 @@ export class Confirm extends Component {
             status: this.props.values.status,
             manager: this.props.values.manager,
             contactNumber: this.props.values.contactNumber,
-            firstName: this.props.values.firstName,
-            lastName: this.props.values.lastName,
-            email: this.props.values.email,
+            name: this.props.values.name,
+            teamName: this.props.values.teamName,
+            role: this.props.values.role,
+            clientWorkPlace: this.props.values.clientWorkPlace,
             mealsDetails: this.props.values.MealsDetails,
+            meetingSchedule: this.props.values.ScheduleList,
         };
 
+        console.log(this.props.values)
         console.log(payload)
         fetch(SAVE_API_URL, {
             method: "POST",
@@ -70,18 +72,20 @@ export class Confirm extends Component {
 
     render() {
         const {
-            values: {firstName, lastName, pmo, admin, contactNumber, manager, status}
+            values: { pmo, admin, contactNumber, manager, status, name, role,teamName,clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails, ScheduleList}
         } = this.props;
         return (
             <React.Fragment>
                 <h1>Confirm User Data</h1>
                 <div>
-                    <label>First Name: {firstName}</label><br/>
-                    <label>Last Name: {lastName}</label><br/>
+                    <label>Name: {name}</label><br/>
+                    <label>Role: {role}</label><br/>
                     <label>PMO: {pmo}</label><br/>
                     <label>Admin: {admin}</label><br/>
                     <label>Contact Number: {contactNumber}</label><br/>
                     <label>Manager: {manager}</label><br/>
+                    <label>Team name: {teamName}</label><br/>
+                    <label>Status: {status}</label><br/>
                 </div>
                 <br/>
 
@@ -98,23 +102,23 @@ export class Confirm extends Component {
         );
     }
 
-    saveClientData(clientData) {
-        //console.log('executed service')
-        const headers = {
-            "Access-Control-Allow-Origin": "*",
-            'Accept': 'application/json',
-            'Content-Type': 'application/json;charset=UTF-8'
-        };
-        // axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
-        // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
-        // axios.defaults.headers.post['Accept'] = 'application/json';
-        return axios.post(`${SAVE_API_URL}`,
-            clientData,
-            {headers: headers})
-            .then((response) => console.log(response),
-                (error) => console.log(error))
-            .catch(error => console.error("Error saving client data !"));
-    }
+    // saveClientData(clientData) {
+    //     //console.log('executed service')
+    //     const headers = {
+    //         "Access-Control-Allow-Origin": "*",
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json;charset=UTF-8'
+    //     };
+    //     // axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+    //     // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+    //     // axios.defaults.headers.post['Accept'] = 'application/json';
+    //     return axios.post(`${SAVE_API_URL}`,
+    //         clientData,
+    //         {headers: headers})
+    //         .then((response) => console.log(response),
+    //             (error) => console.log(error))
+    //         .catch(error => console.error("Error saving client data !"));
+    // }
 }
 
 export default Confirm;

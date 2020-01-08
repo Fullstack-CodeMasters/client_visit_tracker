@@ -11,20 +11,31 @@ export default function View(props) {
     const [cardDetail, setCardDetail] = useState([]);
 
     const fetchCardDetail = async => {
-        // Do backend call to fetch the profile information
-        // const profiles = await.fetch('/get/card/1').json;
+
+        fetch('http://localhost:8080/getClientData', {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Access-Control-Allow-Origin": "http://localhost:3000",
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+
+        })
+            .then(function (response) {
+                return response.json()
+            }).then(function (body) {
+            console.log("Response from backend:  "+body);
+        });
         const cardDetail = {
             step: 1,
-            firstName: '',
-            lastName: '',
-            email: '',
+            name: '',
+            teamName: '',
+            role: '',
             pmo: '',
             admin: '',
             contactNumber: '',
             manager:'',
-            occupation: '',
-            city: '',
-            bio: '',
             MeetingSchedule: [
                 {
                     date: "2017-09-27",
@@ -122,12 +133,9 @@ export default function View(props) {
         <React.Fragment>
             <h1>Details</h1>
             <div>
-                <label >First Name: {cardDetail.firstName}</label><br/>
-                <label >Last Name: {cardDetail.lastName}</label><br/>
-                <label >Email: {cardDetail.email}</label><br/>
-                <label >Occupation: {cardDetail.occupation}</label><br/>
-                <label >City: {cardDetail.city}</label><br/>
-                <label >Bio: {cardDetail.bio}</label><br/>
+                <label >First Name: {cardDetail.name}</label><br/>
+                <label >Team Name: {cardDetail.teamName}</label><br/>
+                <label >Role: {cardDetail.role}</label><br/>
                 <label >PMO: {cardDetail.pmo}</label><br/>
                 <label >Admin: {cardDetail.admin}</label><br/>
                 <label >Contact Number: {cardDetail.contactNumber}</label><br/>

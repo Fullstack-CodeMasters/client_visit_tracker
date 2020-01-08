@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import { Form, Row, Col,Container,ButtonToolbar, Button} from "react-bootstrap";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 export class Meals extends Component {
     continue = e => {
@@ -24,7 +27,7 @@ export class Meals extends Component {
     // }
 render() {
 const { values, handleChange } = this.props;
-console.log(values.MealsDetails);
+console.log(values);
 var meals = values.MealsDetails;
 return (
     <Container>
@@ -38,22 +41,26 @@ return (
                     <Button variant="primary" size="sm" active>
                     {meal.date}
                     </Button>
-            
+
                 </ButtonToolbar>
+                {/*            <DatePicker*/}
+                {/*                // selected={this.state.startDate}*/}
+                {/*                onChange={handleChange('meal.date')}*/}
+                {/*            />*/}
                 <Form.Row>  
                     <Form.Group as={Col} md="4" controlId="arrangeFrom">
                         <Form.Label>Arrange From</Form.Label>
-                        <Form.Control name="arrangeFrom" type="arrangeFrom" placeholder="Arrange From"  onChange={handleChange('meal.arrangeFrom')}
+                        <Form.Control name="arrangeFrom" type="arrangeFrom" placeholder="Arrange From"  onChange={handleChange('arrangeFrom',index)}
               defaultValue={meal.arrangeFrom}/>
 
                     </Form.Group> 
                     <Form.Group  as={Col} md="4" controlId="veg_cnt">
                         <Form.Label>Veg Count</Form.Label>
-                        <Form.Control name="veg_cnt" type="veg_cnt" placeholder="Veg Count" onChange={handleChange('meal.vegCount')} defaultValue={meal.vegCount} required/>
+                        <Form.Control name="veg_cnt" type="veg_cnt" placeholder="Veg Count" onChange={handleChange('vegCount',index)} defaultValue={meal.vegCount} required/>
                     </Form.Group>
                     <Form.Group  as={Col} md="4" controlId="nonveg_cnt">
                         <Form.Label>Non veg Count</Form.Label>
-                        <Form.Control name="nonveg_cnt" type="nonveg_cnt" placeholder="Nonveg Count" onChange={handleChange('meal.nonVegCount')} defaultValue={meal.nonVegCount} required/>
+                        <Form.Control name="nonveg_cnt" type="nonveg_cnt" placeholder="Nonveg Count" onChange={handleChange('nonVegCount',index)} defaultValue={meal.nonVegCount} required/>
                     </Form.Group>
         ​        </Form.Row>     
         </React.Fragment>

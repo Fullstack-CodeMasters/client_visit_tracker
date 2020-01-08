@@ -49,7 +49,7 @@ export class ClientVisitCreateForm extends Component {
             contactNumber: '',
             manager: '',
             status: '',
-          MeetingSchedule: [
+            ScheduleList: [
                 {
                     date: "2017-09-27",
                     schedules: [
@@ -73,71 +73,60 @@ export class ClientVisitCreateForm extends Component {
                         }
                     ]
                 }
-                // ,{
-                //     date: "2017-09-28",
-                //     schedules: [
-                //         {
-                //             from: "10:00",
-                //             to: "11:00",
-                //             description: "Day 02>>meeting with Aravind",
-                //             Attendees: "Aravind"
-                //         },
-                //         {
-                //             from: "11:00",
-                //             to: "12:00",
-                //             description: "Day 02>>meeting with CEO",
-                //             Attendees: "CEO"
-                //         },
-                //         {
-                //             from: "10:00",
-                //             to: "11:00",
-                //             description: "Day 02>>meeting with Nimi",
-                //             Attendees: "Nimi, test"
-                //         }
-                //     ]
-                // },
-                // {
-                //     date: "2017-09-28",
-                //     schedules: [
-                //         {
-                //             from: "10:00",
-                //             to: "11:00",
-                //             description: "Day 03>>meeting with Aravind",
-                //             Attendees: "Aravind"
-                //         },
-                //         {
-                //             from: "11:00",
-                //             to: "12:00",
-                //             description: "Day 03>>meeting with CEO",
-                //             Attendees: "CEO"
-                //         },
-                //         {
-                //             from: "10:00",
-                //             to: "11:00",
-                //             description: "Day 03>>meeting with Nimi",
-                //             Attendees: "Nimi, test"
-                //         }
-                //     ]
-                // }
-                    ],
-            MealsDetails: [
-                {
-                    date: "2017-09-27",
-                    arrangeFrom: "Olive",
-                    vegCount: "2",
-                    nonVegCount: "3"
+                ,{
+                    date: "2017-09-28",
+                    schedules: [
+                        {
+                            from: "10:00",
+                            to: "11:00",
+                            description: "Day 02>>meeting with Aravind",
+                            Attendees: "Aravind"
+                        },
+                        {
+                            from: "11:00",
+                            to: "12:00",
+                            description: "Day 02>>meeting with CEO",
+                            Attendees: "CEO"
+                        },
+                        {
+                            from: "10:00",
+                            to: "11:00",
+                            description: "Day 02>>meeting with Nimi",
+                            Attendees: "Nimi, test"
+                        }
+                    ]
                 },
                 {
                     date: "2017-09-28",
-                    arrangeFrom: "Office",
-                    vegCount: "2",
-                    nonVegCount: "3"
-                },
+                    schedules: [
+                        {
+                            from: "10:00",
+                            to: "11:00",
+                            description: "Day 03>>meeting with Aravind",
+                            Attendees: "Aravind"
+                        },
+                        {
+                            from: "11:00",
+                            to: "12:00",
+                            description: "Day 03>>meeting with CEO",
+                            Attendees: "CEO"
+                        },
+                        {
+                            from: "10:00",
+                            to: "11:00",
+                            description: "Day 03>>meeting with Nimi",
+                            Attendees: "Nimi, test"
+                        }
+                    ]
+                }
+                    ],
+            MealsDetails: [
                 {
-                    date: "2017-09-30",
-                    arrangeFrom: "Four points",
-                    vegCount: "2",
-                    nonVegCount: "3"
+                    date:'',
+                    arrangeFrom: '',
+                    // this.props.clientTripDetails.arrivalDetails.dateTime,
+                    vegCount: '',
+                    nonVegCount: ''
                 }
             ]
         };
@@ -159,8 +148,17 @@ export class ClientVisitCreateForm extends Component {
         });
     };
 
-    // Handle fields change
-    handleChange = input => e => {
+    handleChange = (input,index) => e => {
+        if((input==="arrangeFrom" ) || (input==="vegCount") || (input==="nonVegCount")){
+            var MealsDetails=this.state.MealsDetails;
+            MealsDetails[index][input]=e.target.value;
+            this.setState({MealsDetails: MealsDetails});
+        }
+        else if((input==="to" ) || (input==="from" ) || (input==="Attendees") || (input==="description")){
+            var ScheduleList = this.state.ScheduleList;
+            ScheduleList[index][input]=e.target.value;
+            this.setState({ScheduleList: ScheduleList});
+        }
         this.setState({[input]: e.target.value});
     };
 
@@ -180,16 +178,16 @@ export class ClientVisitCreateForm extends Component {
             values={values}
           />
         );
+      // case 2:
+      //   return (
+      //     <FormPersonalDetails
+      //       nextStep={this.nextStep}
+      //       prevStep={this.prevStep}
+      //       handleChange={this.handleChange}
+      //       values={values}
+      //     />
+      //   );
       case 2:
-        return (
-          <FormPersonalDetails
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      case 3:
         return (
           <Meals
             nextStep={this.nextStep}
@@ -198,7 +196,7 @@ export class ClientVisitCreateForm extends Component {
             values={values}
           />
         );
-        case 4:
+        case 3:
           return (
               <MeetingSchedule
                   nextStep={this.nextStep}
@@ -207,7 +205,7 @@ export class ClientVisitCreateForm extends Component {
                   values={values}
               />
               );
-            case 5:
+            case 4:
                 return (
                     <OtherDetails
                         nextStep={this.nextStep}
@@ -216,7 +214,7 @@ export class ClientVisitCreateForm extends Component {
                         values={values}
                     />
                 );
-            case 6:
+            case 5:
                 return (
                     <Confirm
                         nextStep={this.nextStep}
@@ -224,7 +222,7 @@ export class ClientVisitCreateForm extends Component {
                         values={values}
                     />
                 );
-            case 7:
+            case 6:
                 return <Success/>;
             default:
         }
