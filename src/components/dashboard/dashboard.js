@@ -23,15 +23,14 @@ export default function Dashboard(props) {
 
     return (
         <div className="container px-5 bg-white">
-            <h1>Cards</h1>
+            <h2>Client Visit Requests</h2>
                 {cardDetails.map((card) => (
                     <div className="row">
                         <div className="col-md-10 client-card-box d-inline-flex">
                             <div className="col-md-11">
                                 <div className="client-card-header bg-white">{card.name}</div>
                                 <p className="mbr-text card-text mbr-fonts-style align-left m-0 display-7">
-                                A visit has been planned by {card.name} team on mentioned date. Please help us to make
-                                    needful arrangement as mentioned in the form</p>
+                                Plan client visits requested by {card.name} team </p>
                             </div>
                             <div className="col-md-1 py-4 align-content-center">
                                 <button

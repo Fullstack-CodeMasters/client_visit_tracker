@@ -27,7 +27,7 @@ return (
     <Container>
         <Row>
             <Col md={12}>
-                <h1>Meals Details</h1>
+                <h5>Meals Details</h5>
                 {meals.map(function (meal, index) {
                      return (
                         <React.Fragment key={index}>

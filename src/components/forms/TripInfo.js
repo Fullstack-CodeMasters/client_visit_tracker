@@ -16,12 +16,12 @@ export class TripInfo extends Component {
         return (
             <div>
                 <h5> Arrival </h5>
-                <Details
+                <Details path="/dateTimeDetails" component={() => <Details arrivalDetails={this.state.arrivalDetails}/>}
                 handleChange={this.handleChange}
                 values={values}
                 />
                 <h5> Departure </h5>
-                <Details
+                <Details path="/dateTimeDetails" component={() => <Details departureDetails={this.state.departureDetails}/>}
                 handleChange={this.handleChange}
                 values={values}
                 />

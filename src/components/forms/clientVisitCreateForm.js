@@ -6,6 +6,7 @@ import Success from './Success';
 import Meals from './Meals';
 import OtherDetails from "./OtherDetails";
 import MeetingSchedule from "./MeetingSchedule";
+import moment from 'moment';
 
 
 export class ClientVisitCreateForm extends Component {
@@ -21,20 +22,20 @@ export class ClientVisitCreateForm extends Component {
             teamName: '',
             clientWorkPlace: '',
             clientTripDetails: {
-              arrivalDetails: {
-                dateTime: '',
-                airport: '',
-                terminal: ''
-              },
-              departureDetails: {
-                dateTime: '',
-                airport: '',
-                terminal: ''
-              }
+                arrivalDetails: {
+                    dateTime: '',
+                    airport: '',
+                    terminal: ''
+                },
+                departureDetails: {
+                    dateTime: '',
+                    airport: '',
+                    terminal: ''
+                }
             },
             hotelDetails: {
-              name: '',
-              place: ''
+                name: '',
+                place: ''
             },
             isCabNeededBtwAirportAndHotel: false,
             isCabNeededBtwHotelAndOffice: false,
@@ -51,78 +52,21 @@ export class ClientVisitCreateForm extends Component {
             status: '',
             ScheduleList: [
                 {
-                    date: "2017-09-27",
+                    date: "",
                     schedules: [
                         {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 01>> meeting with Aravind",
-                            Attendees: "Aravind"
-                        },
-                        {
-                            from: "11:00",
-                            to: "12:00",
-                            description: "Day 01>>meeting with CEO",
-                            Attendees: "CEO"
-                        },
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 01>>meeting with Nimi",
-                            Attendees: "Nimi, test"
+                            from: "",
+                            to: "",
+                            description: "",
+                            Attendees: ""
                         }
                     ]
+
                 }
-                ,{
-                    date: "2017-09-28",
-                    schedules: [
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 02>>meeting with Aravind",
-                            Attendees: "Aravind"
-                        },
-                        {
-                            from: "11:00",
-                            to: "12:00",
-                            description: "Day 02>>meeting with CEO",
-                            Attendees: "CEO"
-                        },
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 02>>meeting with Nimi",
-                            Attendees: "Nimi, test"
-                        }
-                    ]
-                },
-                {
-                    date: "2017-09-28",
-                    schedules: [
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 03>>meeting with Aravind",
-                            Attendees: "Aravind"
-                        },
-                        {
-                            from: "11:00",
-                            to: "12:00",
-                            description: "Day 03>>meeting with CEO",
-                            Attendees: "CEO"
-                        },
-                        {
-                            from: "10:00",
-                            to: "11:00",
-                            description: "Day 03>>meeting with Nimi",
-                            Attendees: "Nimi, test"
-                        }
-                    ]
-                }
-                    ],
+            ],
             MealsDetails: [
                 {
-                    date:'',
+                    date: '',
                     arrangeFrom: '',
                     // this.props.clientTripDetails.arrivalDetails.dateTime,
                     vegCount: '',
@@ -148,73 +92,124 @@ export class ClientVisitCreateForm extends Component {
         });
     };
 
+    addnewSchedule = () => {
+        var Schedule = this.state.ScheduleList;
+        console.log(Schedule);
+        var length = this.state.ScheduleList.length;
+        var prevdate = this.state.ScheduleList[length - 1].date;
+        var nextdate = moment(moment(prevdate).format('DD-MM-YYYY')).add(1, 'day').format('DD-MM-YYYY');
+        Schedule.push({date: nextdate,schedules:[{Attendees: "", description: "", to: "", from: ""}]});
+        console.log(Schedule);
+        this.setState({ScheduleList: Schedule});
+    };
+
+
     addnewMeals = () => {
-                var MealsData = this.state.MealsDetails;
-                console.log(MealsData);
-                MealsData.push({date: "", arrangeFrom: "", vegCount: "", nonVegCount: ""});
-                 console.log(MealsData);
-                this.setState({MealsDetails:MealsData});
-            };
-
-
-    handleChange = (input,index) => e => {
-        if((input==="arrangeFrom" ) || (input==="vegCount") || (input==="nonVegCount")){
-            var MealsDetails=this.state.MealsDetails;
-            MealsDetails[index][input]=e.target.value;
+        var MealsData = this.state.MealsDetails;
+        console.log(MealsData);
+        var length = this.state.MealsDetails.length;
+        var prevdate = this.state.MealsDetails[length - 1].date;
+        var nextdate = moment(moment(prevdate).format('DD-MM-YYYY')).add(1, 'day').format('DD-MM-YYYY');
+        MealsData.push({date: nextdate, arrangeFrom: "", vegCount: "", nonVegCount: ""});
+        console.log(MealsData);
+        this.setState({MealsDetails: MealsData});
+    };
+    handleChange = (input, index, index1) => e => {
+        if ((input === "dateTime") || (input === "airport") || (input === "terminal")) {
+            if (index === "arrival") {
+                var clientTripDetails = this.state.clientTripDetails;
+                clientTripDetails.arrivalDetails[input] = e.target.value;
+                this.setState({clientTripDetails: clientTripDetails});
+                if (input === "dateTime") {
+                    var MealsDetails = this.state.MealsDetails;
+                    MealsDetails[0].date = e.target.value;
+                    this.setState({MealsDetails: MealsDetails});
+                    var ScheduleList = this.state.ScheduleList;
+                    console.log(ScheduleList)
+                    ScheduleList[0].date = e.target.value;
+                    this.setState({ScheduleList: ScheduleList});
+                }
+            } else {
+                var clientTripDetails = this.state.clientTripDetails;
+                clientTripDetails.departureDetails[input] = e.target.value;
+                this.setState({clientTripDetails: clientTripDetails});
+            }
+        } else if ((input === "arrangeFrom") || (input === "vegCount") || (input === "nonVegCount")) {
+            var MealsDetails = this.state.MealsDetails;
+            MealsDetails[index][input] = e.target.value;
             this.setState({MealsDetails: MealsDetails});
-        }
-        else if((input==="to" ) || (input==="from" ) || (input==="Attendees") || (input==="description")){
+        } else if ((input === "to") || (input === "from") || (input === "Attendees") || (input === "description")) {
             var ScheduleList = this.state.ScheduleList;
-            ScheduleList[index][input]=e.target.value;
+            console.log(index)
+            console.log(index1)
+            console.log("@@@@@@@"+ScheduleList[index].schedules[0].description)
+            ScheduleList[index].schedules[0][input] = e.target.value;
             this.setState({ScheduleList: ScheduleList});
         }
         this.setState({[input]: e.target.value});
     };
 
-  render() {
-    const { step } = this.state;
+    render() {
+        const {step} = this.state;
 
-    const { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails, ScheduleList, pmo, admin, manager, status, contactNumber } = this.state;
-    const values = { name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails, ScheduleList,pmo, admin, manager, status, contactNumber };
+        const {name, role, teamName, clientWorkPlace, clientTripDetails, hotelDetails, isCabNeededFromToAirport, isCabNeededFromToOffice, MealsDetails, ScheduleList, pmo, admin, manager, status, contactNumber} = this.state;
+        const values = {
+            name,
+            role,
+            teamName,
+            clientWorkPlace,
+            clientTripDetails,
+            hotelDetails,
+            isCabNeededFromToAirport,
+            isCabNeededFromToOffice,
+            MealsDetails,
+            ScheduleList,
+            pmo,
+            admin,
+            manager,
+            status,
+            contactNumber
+        };
 
-    switch (step) {
-      case 1:
-        return (
-          <FormUserDetails
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      // case 2:
-      //   return (
-      //     <FormPersonalDetails
-      //       nextStep={this.nextStep}
-      //       prevStep={this.prevStep}
-      //       handleChange={this.handleChange}
-      //       values={values}
-      //     />
-      //   );
-      case 2:
-        return (
-          <Meals
-            nextStep={this.nextStep}
-            addnewMeals = {this.addnewMeals}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-        case 3:
-          return (
-              <MeetingSchedule
-                  nextStep={this.nextStep}
-                  prevStep={this.prevStep}
-                  handleChange={this.handleChange}
-                  values={values}
-              />
-              );
+        switch (step) {
+            case 1:
+                return (
+                    <FormUserDetails
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
+                    />
+                );
+            // case 2:
+            //   return (
+            //     <FormPersonalDetails
+            //       nextStep={this.nextStep}
+            //       prevStep={this.prevStep}
+            //       handleChange={this.handleChange}
+            //       values={values}
+            //     />
+            //   );
+            case 2:
+                return (
+                    <Meals
+                        nextStep={this.nextStep}
+                        addnewMeals={this.addnewMeals}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
+                    />
+                );
+            case 3:
+                return (
+                    <MeetingSchedule
+                        nextStep={this.nextStep}
+                        addnewSchedule={this.addnewSchedule}
+                        prevStep={this.prevStep}
+                        handleChange={this.handleChange}
+                        values={values}
+                    />
+                );
             case 4:
                 return (
                     <OtherDetails

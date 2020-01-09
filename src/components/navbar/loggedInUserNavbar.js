@@ -8,7 +8,7 @@ const LoggedInUserNavbar = props => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-info">
             <div className="container">
-                <a className="navbar-brand font-weight-bolder" href="/">CMT</a>
+                <a className="navbar-brand font-weight-bolder heading" href="/" ><h2>Client Visit Management</h2></a>
                 <button className="border-left navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
                         aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

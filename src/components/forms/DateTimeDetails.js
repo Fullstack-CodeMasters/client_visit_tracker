@@ -6,6 +6,8 @@ export class Details extends Component {
         this.props.nextStep();
     };
     handleChange = input => e => {
+        console.log("Input"+input)
+        console.log("Value"+this.props)
         this.setState({ [input]: e.target.value });
     };
     render() {
@@ -15,17 +17,17 @@ export class Details extends Component {
                 <Form.Row>
                     <Form.Group as={Col} md="3" controlId="dateTime">
                         <Form.Label>Date Time</Form.Label>
-                        <Form.Control name="dateTime" type="dateTime" placeholder="Date Time" onChange={handleChange('dateTime')}
+                        <Form.Control name="dateTime" type="dateTime" placeholder="Date Time" onChange={this.handleChange('dateTime')}
                        defaultValue={values}/>
                     </Form.Group>
                 <Form.Group as={Col} md="3" controlId="airport">
                     <Form.Label>Airport</Form.Label>
-                    <Form.Control name="airport" type="airport" placeholder="Airport" onChange={handleChange('airport')}
+                    <Form.Control name="airport" type="airport" placeholder="Airport" onChange={this.handleChange('airport')}
                     defaultValue={values}/>
                 </Form.Group>
                 <Form.Group as={Col} md="3" controlId="terminal">
                     <Form.Label>Terminal</Form.Label>
-                    <Form.Control name="terminal" type="terminal" placeholder="Terminal" onChange={handleChange('terminal')}
+                    <Form.Control name="terminal" type="terminal" placeholder="Terminal" onChange={this.handleChange('terminal')}
                     defaultValue={values}/>
                 </Form.Group>
                 </Form.Row>

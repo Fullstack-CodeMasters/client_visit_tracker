@@ -30,7 +30,7 @@ export class OtherDetails extends Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <h1>Other Details</h1>
+                        <h5>Other Details</h5>
                                 <React.Fragment>
                                     <Form.Row>
                                         <Form.Group as={Col} md="4" controlId="contactNumber">

@@ -24,7 +24,7 @@ export class CabDetails extends Component {
         let classNames = ["switch", (this.props.isOn) ? "switch_is-on" : "switch_is-off"].join(" ");
         return (
             <div className={classNames} onClick={this.props.handleToggle}>
-                <h3> Cab Details </h3>
+                <h5> Cab Details </h5>
                 <Form>
                   <Form.Check
                     type="switch"

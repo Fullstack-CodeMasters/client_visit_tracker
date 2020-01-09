@@ -11,7 +11,7 @@ export class HotelDetails extends Component {
     render() {
         return (
             <div>
-                <h3> Enter Hotel Details </h3>
+                <h5> Enter Hotel Details </h5>
                 <Form.Row>
                     <Form.Group as={Col} md="3" controlId="hotelName">
                         <Form.Label>Name</Form.Label>

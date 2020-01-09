@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Button, ButtonToolbar, Container} from "react-bootstrap";
 
 const BASE_API_URL = `http://localhost:8080`
 const SAVE_API_URL = `${BASE_API_URL}/saveData`
@@ -76,28 +77,40 @@ export class Confirm extends Component {
         } = this.props;
         return (
             <React.Fragment>
-                <h1>Confirm User Data</h1>
+                <Container>
+                <h4>Confirm User Data: </h4>
                 <div>
                     <label>Name: {name}</label><br/>
                     <label>Role: {role}</label><br/>
                     <label>PMO: {pmo}</label><br/>
                     <label>Admin: {admin}</label><br/>
+                    <label>Client Arrival Date: {clientTripDetails.arrivalDetails.dateTime}</label><br/>
+                    <label>Client Arrival Date: {clientTripDetails.arrivalDetails.dateTime}</label><br/>
+                    <label>Client Departure Date: {clientTripDetails.departureDetails.dateTime}</label><br/>
                     <label>Contact Number: {contactNumber}</label><br/>
                     <label>Manager: {manager}</label><br/>
                     <label>Team name: {teamName}</label><br/>
                     <label>Status: {status}</label><br/>
+                    <div>
+                        {MealsDetails.map((meals, index) => {
+                            return (
+                                <React.Fragment>
+                                    <b>Date: {meals.date}</b><br/>
+                                    <label>Arranged From: {meals.arrangeFrom}</label><br/>
+                                    <label>Veg Count: {meals.vegCount}</label><br/>
+                                    <label>Non Veg Count: {meals.nonVegCount}</label><br/>
+                                </React.Fragment>
+                            )
+                        })}
+                    </div>
                 </div>
                 <br/>
 
-                <button
-                    onClick={this.back}
-                >Back
-                </button>
-
-                <button
-                    onClick={this.continue}
-                >Confirm & Continue
-                </button>
+                    <ButtonToolbar>
+                        <Button variant="primary"  onClick={this.back}>Back</Button>&nbsp;
+                        <Button variant="secondary" onClick={this.continue}>Confirm & Continue</Button>
+                    </ButtonToolbar>
+                </Container>
             </React.Fragment>
         );
     }
